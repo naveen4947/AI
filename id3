@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import math
 class Node:
-    def _init_(self, l):
+    def __init__(self, l):
         self.label = l
         self.branch = {}
 def entropy(data):
@@ -19,7 +19,7 @@ def gain(en_s,data_s,attrib):
     values = set(data_s[attrib])
     #print(values)
     gain = en_s
-    for value in values:
+    for value in values:    
         gain -= len(data_s.loc[data_s[attrib]==value])/float(len(data_s)) * entropy(data_s.loc[data_s[attrib]==value])
     return gain
 def get_attr(data):
@@ -78,4 +78,4 @@ for attr in data.columns[:-1]:
     test_str[attr] = input(attr+": ")
 print(test_str)
 
-print(test(tree, test_str))
+print(test(tree, test_str))
